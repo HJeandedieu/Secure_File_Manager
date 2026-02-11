@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>File Manager</h2>
+    <a href="index.html">Home</a>
+    <a href="upload.html" class="active">Upload</a>
+    <a href="download.html">Download</a>
+    <a href="compress.html">Compress</a>
+    <a href="edit.html">Edit</a>
+    <a href="delete.html">Delete</a>
+</div>
+
+<div class="main">
+    <h1>Upload File</h1>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete File</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>File Manager</h2>
+    <a href="index.html">Home</a>
+    <a href="upload.html">Upload</a>
+    <a href="download.html">Download</a>
+    <a href="compress.html">Compress</a>
+    <a href="edit.html">Edit</a>
+    <a href="delete.html" class="active">Delete</a>
+</div>
+
+<div class="main">
+    <h1>Delete File</h1>
+    <div class="file-list">
+        <div class="file-item">
+            <span>example.txt</span>
+            <form action="delete.php" method="post" style="display:inline;">
+                <input type="hidden" name="filename" value="example.txt">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <div class="file-item">
+            <span>document.pdf</span>
+            <form action="delete.php" method="post" style="display:inline;">
+                <input type="hidden" name="filename" value="document.pdf">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <!-- PHP will generate more file items dynamically -->
+    </div>
+</div>
+
+</body>
+</html>
