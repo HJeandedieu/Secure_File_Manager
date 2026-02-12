@@ -14,7 +14,7 @@
     <a href="upload.html">Upload</a>
     <a href="download.html">Download</a>
     <a href="compress.html">Compress</a>
-    <a href="edit.html">Edit</a>
+    <a href="edit.php">Edit</a>
     <a href="delete.html" class="active">Delete</a>
 </div>
 
@@ -36,27 +36,34 @@
 <!--            </form>-->
 <!--        </div>-->
         <!-- PHP will generate more file items dynamically -->
-        <div class="file-item">
-            <?php
-            $files = scandir("../trash");
-            foreach ($files as $file) {
-                echo "<p>$file</p>";
+        <?php
+        $folder = "../trash";
+        $files = array_diff(scandir($folder), array('.', '..')); // skip . and ..
+
+        // Handle deletion
+        if(isset($_POST['delete'])){
+            $filename = $_POST['filename'];
+            $filepath = $folder . "/" . $filename;
+            if(file_exists($filepath) && unlink($filepath)){
+                echo "<p style='color:green;'>File '$filename' successfully deleted</p>";
+            } else {
+                echo "<p style='color:red;'>File '$filename' could not be deleted</p>";
             }
-            if(isset($_POST['submit'])){
-                $filename = $_POST['filename'];
-                if(unlink("../trash/$filename")){
-                    echo "<p style='color:green;'>File successfully deleted</p>";
-                }
-            }
-            ?>
+        }
+        ?>
+
+        <div class="file-list">
+            <?php foreach($files as $file): ?>
+                <div class="file-item">
+                    <span><?= $file ?></span>
+                    <form method="post" action="" style="display:inline;">
+                        <input type="hidden" name="filename" value="<?= $file ?>">
+                        <button type="submit" name="delete" style="background-color: maroon;">Delete</button>
+                    </form>
+                </div>
+            <?php endforeach; ?>
         </div>
-    <div class="file-item">
-        <form method="post" action="">
-            <label>File to delete</label><br>
-            <input type="text" name="filename"><br>
-            <button type="submit" name="submit" style="background-color: maroon">Delete</button>
-        </form>
-    </div>
+
     </div>
 </div>
 

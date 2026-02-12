@@ -14,7 +14,7 @@
     <a href="upload.html">Upload</a>
     <a href="download.html">Download</a>
     <a href="compress.html">Compress</a>
-    <a href="edit.html" class="active">Edit</a>
+    <a href="edit.php" class="active">Edit</a>
     <a href="delete.php">Delete</a>
 </div>
 
