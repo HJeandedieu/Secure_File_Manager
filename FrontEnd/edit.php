@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +22,47 @@
 <div class="main">
     <h1>Edit File</h1>
     <form action="edit.php" method="post">
-        <input type="text" name="filename" placeholder="Enter file name" required>
-        <button type="submit">Edit</button>
+
+
+
+
+<?php
+$file = "../trash/summer.txt";
+if(is_file($file)){
+    $fileContents = file_get_contents($file);
+}else{
+    file_put_contents($file, "Hello I am redBlue Inspired to change.\nMay the Lord lead the way.", FILE_APPEND);
+    $fileContents = file_get_contents($file);
+}
+
+?>
+
+        <?php
+        if(isset($_POST['remove'])){
+            $fileContents = "";
+            file_put_contents($file, $fileContents);
+        }
+
+        if(isset($_POST['uppercase'])){
+            $fileContents = strtoupper($fileContents);
+            file_put_contents($file, $fileContents);
+        }
+        if(isset($_POST['lowercase'])){
+            $fileContents = strtolower($fileContents);
+            file_put_contents($file, $fileContents);
+        }
+        if(isset($_POST['trim'])){
+            $fileContents = trim($fileContents);
+            file_put_contents($file, $fileContents);
+        }
+        ?>
+        <label>File content</label><br>
+        <textarea name="content" rows="5" cols="50" style="background-color: transparent; color: white;"><?php echo htmlspecialchars($fileContents); ?></textarea><br>
+        <button type="submit" name="trim">Trim</button>
+        <button type="submit" name="remove">Remove</button>
+        <button type="submit" name="uppercase">UpperCase</button>
+        <button type="submit" name="lowercase">LowerCase</button>
     </form>
 </div>
-
 </body>
 </html>
