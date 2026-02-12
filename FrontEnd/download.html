@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure File Management - Home</title>
+    <title>Download File</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +12,18 @@
     <h2>File Manager</h2>
     <a href="index.html">Home</a>
     <a href="upload.html">Upload</a>
-    <a href="download.html">Download</a>
+    <a href="download.html" class="active">Download</a>
     <a href="compress.html">Compress</a>
     <a href="edit.php">Edit</a>
     <a href="delete.php">Delete</a>
 </div>
 
 <div class="main">
-    <h1>Welcome to Secure File Management</h1>
-    <p>Select an action from the sidebar to manage your files.</p>
+    <h1>Download File</h1>
+    <form action="../download.php" method="post">
+        <input type="text" name="filename" placeholder="Enter file name" required>
+        <button type="submit" name="download">Download</button>
+    </form>
 </div>
 
 </body>

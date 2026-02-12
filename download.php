@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['download'])) {
-    $file = "uploads/barca.jpeg";
+    $file = "uploads/" . $_POST['filename'];
 
     if (file_exists($file)) {
         // Clear output buffer to prevent corruption
