@@ -22,22 +22,14 @@
 <div class="main">
     <h1>Edit File</h1>
     <form action="edit.php" method="post">
-
-
-
-
-<?php
-$file = "../trash/summer.txt";
-if(is_file($file)){
-    $fileContents = file_get_contents($file);
-}else{
-    file_put_contents($file, "Hello I am redBlue Inspired to change.\nMay the Lord lead the way.", FILE_APPEND);
-    $fileContents = file_get_contents($file);
-}
-
-?>
-
         <?php
+        $file = "../trash/summer.txt";
+        if(file_exists($file)){
+            $fileContents = file_get_contents($file);
+        }else{
+            file_put_contents($file, "Hello I am redBlue Inspired to change.\nMay the Lord lead the way.", FILE_APPEND);
+            $fileContents = file_get_contents($file);
+        }
         if(isset($_POST['remove'])){
             $fileContents = "";
             file_put_contents($file, $fileContents);
@@ -55,6 +47,7 @@ if(is_file($file)){
             $fileContents = trim($fileContents);
             file_put_contents($file, $fileContents);
         }
+
         ?>
         <label>File content</label><br>
         <textarea name="content" rows="5" cols="50" style="background-color: transparent; color: white;"><?php echo htmlspecialchars($fileContents); ?></textarea><br>
